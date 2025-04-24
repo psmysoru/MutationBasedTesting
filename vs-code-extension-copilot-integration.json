@@ -1,0 +1,58 @@
+{
+  "name": "mutation-test-generator",
+  "displayName": "Mutation Test Generator",
+  "description": "Generates tests using GitHub Copilot to catch mutations in your code",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Testing"
+  ],
+  "activationEvents": [
+    "onCommand:mutation-test-generator.generateTests"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mutation-test-generator.generateTests",
+        "title": "Generate Tests for Mutations"
+      }
+    ],
+    "configuration": {
+      "title": "Mutation Test Generator",
+      "properties": {
+        "mutationTestGenerator.sourceDir": {
+          "type": "string",
+          "default": "",
+          "description": "Directory containing source code files"
+        },
+        "mutationTestGenerator.testDir": {
+          "type": "string",
+          "default": "",
+          "description": "Directory containing test files"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.70.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "@vscode/test-electron": "^2.1.5"
+  }
+}
